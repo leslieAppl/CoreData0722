@@ -28,9 +28,12 @@ class BookTableViewController: UITableViewController {
     //TODO: - 4 Fetching values from the Persistent Store
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        ///1. To make a request, we first have to get the NSFetchRequest object by calling the fetchRequest() method on the subclass that corresponds to the objects we want to read (in this case we want to get books, so we call it on the Books class).
+        ///IMPORTANT:
+        ///The NSFetchRequest class is generic. We have studied how to create generic functions, but you can also create generic structures and classes. When a generic class is initialized, we have to specify the data type that the instance is going to use between angle brackets (NSFetchRequest<Books>). This is why you can also initialize generic arrays, sets and dictionaries with the data type between angle brackets (var myarray = Array<Int>()).
         let request: NSFetchRequest<Books> = Books.fetchRequest()
         do {
+            ///2. The next step is to fetch the objects with the context's fetch() method. This method returns an array of objects that we can assign to a property to be able to access the values from other methods in the class. In this example, we called that property listOfBooks.
             listOfBooks = try context.fetch(request)
         } catch {
             print("Error")
