@@ -86,6 +86,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="authorName" destination="MsA-EP-XVK" id="CvX-Rc-SIY"/>
                         <outlet property="bookTitle" destination="Tbz-En-efR" id="FnH-q4-rPf"/>
                         <outlet property="bookYear" destination="bDt-d0-pGD" id="vD5-Q2-BmG"/>
                     </connections>
@@ -94,16 +95,16 @@
             </objects>
             <point key="canvasLocation" x="2035" y="88"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Authors Table View Controller-->
         <scene sceneID="Mwe-vY-Q8n">
             <objects>
-                <tableViewController id="Ul1-uE-riJ" sceneMemberID="viewController">
+                <tableViewController id="Ul1-uE-riJ" customClass="AuthorsTableViewController" customModule="CoreData0722" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Taw-x8-RcH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="LXY-nJ-cf8" style="IBUITableViewCellStyleDefault" id="j6e-8B-nKB">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="authorsCell" textLabel="LXY-nJ-cf8" style="IBUITableViewCellStyleDefault" id="j6e-8B-nKB">
                                 <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="j6e-8B-nKB" id="1Gh-id-nfn">
@@ -133,15 +134,19 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="jbS-cU-rir" kind="unwind" identifier="backFromList" unwindAction="backAuthor:" id="OoV-39-vP9"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UrF-Ey-7Oo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="jbS-cU-rir" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2735" y="88"/>
         </scene>
-        <!--View Controller-->
+        <!--Edit Author View Controller-->
         <scene sceneID="UsR-DY-uwg">
             <objects>
-                <viewController id="RVf-fe-Mya" sceneMemberID="viewController">
+                <viewController id="RVf-fe-Mya" customClass="EditAuthorViewController" customModule="CoreData0722" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JQL-tb-UEZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -169,8 +174,12 @@
                         <viewLayoutGuide key="safeArea" id="kWm-rz-7Sg"/>
                     </view>
                     <navigationItem key="navigationItem" id="Zud-Ko-y9m"/>
+                    <connections>
+                        <segue destination="rfz-J4-d8P" kind="unwind" identifier="backFromNew" unwindAction="backAuthor:" id="oNz-g2-Ohl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zOK-EB-nBK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="rfz-J4-d8P" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3412" y="88"/>
         </scene>

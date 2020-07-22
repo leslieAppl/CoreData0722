@@ -14,8 +14,10 @@ class EditBookViewController: UIViewController {
 
     @IBOutlet weak var bookTitle: UITextField!
     @IBOutlet weak var bookYear: UITextField!
+    @IBOutlet weak var authorName: UILabel!
     
     var context: NSManagedObjectContext!
+    var selectedAuthor: Authors!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +38,7 @@ class EditBookViewController: UIViewController {
             newBook.year = year!
             newBook.cover = UIImage(named: "nocover")
             newBook.thumbnail = UIImage(named: "nothumbnail")
-            newBook.author = nil
+            newBook.author = selectedAuthor
             
             do {
                 try context.save()
@@ -45,6 +47,20 @@ class EditBookViewController: UIViewController {
             }
             
             navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    //TODO: - 5 Adding an author to the book
+    @IBAction func backAuthor(_ segue: UIStoryboardSegue) {
+        if segue.identifier == "backFromList" {
+            let controller = segue.source as! AuthorsTableViewController
+            selectedAuthor = controller.selectedAuthor
+            authorName.text = selectedAuthor.name
+        }
+        else if segue.identifier == "backFromNew" {
+            let controller = segue.source as! EditAuthorViewController
+            selectedAuthor = controller.selectedAuthor
+            authorName.text = selectedAuthor.name
         }
     }
     

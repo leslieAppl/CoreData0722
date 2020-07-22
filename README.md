@@ -8,4 +8,6 @@
 
 ## Fetching values from the Persistent Store
 
+## Adding an author to the book
 
+## Listing authors
