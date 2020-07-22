@@ -7,14 +7,25 @@
 //
 
 import UIKit
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    //TODO: - 1 Initializing the Core Data stack in the app’s delegate
+    var container: NSPersistentContainer!
+    var context: NSManagedObjectContext!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        container = NSPersistentContainer(name: "books")
+        container.loadPersistentStores { (storeDescription, error) in
+            if error == nil {
+                self.context = self.container.viewContext
+            } else {
+                print("Error")
+            }
+        }
+        
         return true
     }
 
