@@ -7,7 +7,9 @@
 //
 
 import UIKit
+import CoreData
 
+//TODO: - 7 Inserting new authors
 class EditAuthorViewController: UIViewController {
 
     var selectedAuthor: Authors!
@@ -15,10 +17,9 @@ class EditAuthorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
     }
     
-
     /*
     // MARK: - Navigation
 

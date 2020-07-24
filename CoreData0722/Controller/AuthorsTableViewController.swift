@@ -22,7 +22,7 @@ class AuthorsTableViewController: UITableViewController {
         let appDelegate = app.delegate as! AppDelegate
         context = appDelegate.context
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let request: NSFetchRequest<Authors> = Authors.fetchRequest()
@@ -56,10 +56,12 @@ class AuthorsTableViewController: UITableViewController {
         return cell
     }
     
+    ///Performing an unwind segue programmatically
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedAuthor = listOfAuthors[indexPath.row]
         performSegue(withIdentifier: "backFromList", sender: self)
     }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

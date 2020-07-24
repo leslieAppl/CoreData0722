@@ -11,3 +11,7 @@
 ## Adding an author to the book
 
 ## Listing authors
+
+## Inserting new authors
+
+

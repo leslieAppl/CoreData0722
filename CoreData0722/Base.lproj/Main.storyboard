@@ -135,7 +135,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="jbS-cU-rir" kind="unwind" identifier="backFromList" unwindAction="backAuthor:" id="OoV-39-vP9"/>
+                        <segue destination="jbS-cU-rir" kind="unwind" identifier="backFromList" unwindAction="backAuthor:" id="GDo-p2-LKA"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UrF-Ey-7Oo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -173,9 +173,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kWm-rz-7Sg"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Zud-Ko-y9m"/>
+                    <navigationItem key="navigationItem" id="Zud-Ko-y9m">
+                        <barButtonItem key="rightBarButtonItem" title="Save Author" id="JHc-nq-v5k"/>
+                    </navigationItem>
                     <connections>
-                        <segue destination="rfz-J4-d8P" kind="unwind" identifier="backFromNew" unwindAction="backAuthor:" id="oNz-g2-Ohl"/>
+                        <segue destination="rfz-J4-d8P" kind="unwind" identifier="backFromNew" unwindAction="backAuthor:" id="gyB-rx-2zm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zOK-EB-nBK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
