@@ -26,6 +26,7 @@ class EditBookViewController: UIViewController {
         let app = UIApplication.shared
         let appDelegate = app.delegate as! AppDelegate
         context = appDelegate.context
+
     }
     
     @IBAction func saveBookBtnPressed(_ sender: UIBarButtonItem) {
