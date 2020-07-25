@@ -12,11 +12,18 @@ import CoreData
 //TODO: - 7 Inserting new authors
 class EditAuthorViewController: UIViewController {
 
+    @IBOutlet weak var authorName: UITextField!
+    
+    var context: NSManagedObjectContext!
     var selectedAuthor: Authors!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        authorName.becomeFirstResponder()
+        let app = UIApplication.shared
+        let appDelegate = app.delegate as! AppDelegate
+        context = appDelegate.context
         
     }
     
@@ -30,4 +37,18 @@ class EditAuthorViewController: UIViewController {
     }
     */
 
+    @IBAction func saveAuthor(_ sender: UIBarButtonItem) {
+        let name = authorName.text?.trimmingCharacters(in: .whitespaces)
+        if name != "" {
+            selectedAuthor = Authors(context: context)
+            selectedAuthor.name = name
+            
+            do {
+                try context.save()
+                performSegue(withIdentifier: "backFromNew", sender: self)
+            } catch {
+                print("Error")
+            }
+        }
+    }
 }

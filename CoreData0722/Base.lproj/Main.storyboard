@@ -174,9 +174,14 @@
                         <viewLayoutGuide key="safeArea" id="kWm-rz-7Sg"/>
                     </view>
                     <navigationItem key="navigationItem" id="Zud-Ko-y9m">
-                        <barButtonItem key="rightBarButtonItem" title="Save Author" id="JHc-nq-v5k"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save Author" id="JHc-nq-v5k">
+                            <connections>
+                                <action selector="saveAuthor:" destination="RVf-fe-Mya" id="au7-Qz-whl"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="authorName" destination="a80-HL-rm6" id="Rq9-Ru-jKu"/>
                         <segue destination="rfz-J4-d8P" kind="unwind" identifier="backFromNew" unwindAction="backAuthor:" id="gyB-rx-2zm"/>
                     </connections>
                 </viewController>
