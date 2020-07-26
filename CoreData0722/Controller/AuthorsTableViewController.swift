@@ -21,6 +21,12 @@ class AuthorsTableViewController: UITableViewController {
         let app = UIApplication.shared
         let appDelegate = app.delegate as! AppDelegate
         context = appDelegate.context
+        
+        //TODO: - 10 Counting the authors available
+        let request: NSFetchRequest<Authors> = Authors.fetchRequest()
+        if let total = try? context.count(for: request) {
+            print("Total Author: \(total)")
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -51,7 +57,14 @@ class AuthorsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "authorsCell", for: indexPath)
         let author = listOfAuthors[indexPath.row]
-        cell.textLabel?.text = author.name
+        let name = author.name
+        
+        //TODO: - 11 Counting the books of each author
+        var total = 0
+        if let totalBooks = author.books {  ///To-Many relationship
+            total = totalBooks.count    ///Count the number of relationship objects
+        }
+        cell.textLabel?.text =  "\(name!) (\(total))"
 
         return cell
     }
