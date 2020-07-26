@@ -37,8 +37,17 @@ class EditBookViewController: UIViewController {
             let newBook = Books(context: context)
             newBook.title = title
             newBook.year = year!
-            newBook.cover = UIImage(named: "nocover")
-            newBook.thumbnail = UIImage(named: "nothumbnail")
+//            newBook.cover = UIImage(named: "nocover")
+//            newBook.thumbnail = UIImage(named: "nothumbnail")
+            
+            //TODO: - 8 Converting images into raw data
+            ///Presetting: books.xcdatamodeld -> Books Entity -> cover and thumbnail Attributes ->
+            ///Attribute Type: Binary Data; Deprecated: Store in External Record File.
+            let nocover = UIImage(named: "nocover")
+            let nothumbnail = UIImage(named: "nothumbnail")
+            newBook.cover = nocover?.pngData()
+            newBook.thumbnail = nothumbnail?.pngData()
+            
             newBook.author = selectedAuthor
             
             do {
@@ -49,6 +58,8 @@ class EditBookViewController: UIViewController {
             
             navigationController?.popViewController(animated: true)
         }
+        
+        
     }
     
     //TODO: - 5 Adding an author to the book

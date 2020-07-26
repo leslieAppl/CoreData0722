@@ -60,7 +60,13 @@ class BookTableViewController: UITableViewController {
         
         let book = listOfBooks[indexPath.row]
         cell.bookTitle.text = book.title
-        cell.bookCover.image = book.thumbnail as? UIImage
+//        cell.bookCover.image = book.thumbnail as? UIImage
+        
+        //TODO: - 9 Getting back the images from data
+        if book.thumbnail != nil {
+            cell.bookCover.image = UIImage(data: book.thumbnail!)
+        }
+
         cell.bookYear.text = String(book.year)
         
         let author = book.author
