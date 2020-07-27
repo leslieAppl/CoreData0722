@@ -18,4 +18,6 @@
 
 ## Counting Objects
 
+## Predicate
 
+## Predicate | Checking for duplicates

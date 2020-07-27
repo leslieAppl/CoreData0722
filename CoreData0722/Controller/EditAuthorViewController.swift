@@ -40,15 +40,33 @@ class EditAuthorViewController: UIViewController {
     @IBAction func saveAuthor(_ sender: UIBarButtonItem) {
         let name = authorName.text?.trimmingCharacters(in: .whitespaces)
         if name != "" {
-            selectedAuthor = Authors(context: context)
-            selectedAuthor.name = name
+            //TODO: - 17 Checking for duplicates
+            let request: NSFetchRequest<Authors> = Authors.fetchRequest()
+            request.predicate = NSPredicate(format: "name = %@", name!)
             
-            do {
-                try context.save()
-                performSegue(withIdentifier: "backFromNew", sender: self)
-            } catch {
-                print("Error")
+            if let total = try? context.count(for: request) {
+                if total == 0 {
+                    selectedAuthor = Authors(context: context)
+                    selectedAuthor.name = name
+                    
+                    do {
+                        try context.save()
+                        performSegue(withIdentifier: "backFromNew", sender: self)
+                    } catch {
+                        print("Error")
+                    }
+                }
             }
+            
+//            selectedAuthor = Authors(context: context)
+//            selectedAuthor.name = name
+//
+//            do {
+//                try context.save()
+//                performSegue(withIdentifier: "backFromNew", sender: self)
+//            } catch {
+//                print("Error")
+//            }
         }
     }
 }

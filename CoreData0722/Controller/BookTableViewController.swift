@@ -32,6 +32,28 @@ class BookTableViewController: UITableViewController {
         ///IMPORTANT:
         ///The NSFetchRequest class is generic. We have studied how to create generic functions, but you can also create generic structures and classes. When a generic class is initialized, we have to specify the data type that the instance is going to use between angle brackets (NSFetchRequest<Books>). This is why you can also initialize generic arrays, sets and dictionaries with the data type between angle brackets (var myarray = Array<Int>()).
         let request: NSFetchRequest<Books> = Books.fetchRequest()
+        
+        //TODO: - 12 Filtering books by year | Attribute Property
+//        request.predicate = NSPredicate(format: "year = 1983", argumentArray: nil)
+        
+        //TODO: - 13 Filtering books by author | Relationship Property
+        ///Search for a value in a relationship with concatenating the properties with dot notation
+        ///The name of the author was inserted inside the string using single quotes
+//        request.predicate = NSPredicate(format: "author.name = 'leslie'", argumentArray: nil)
+        
+        //TODO: - 14 Creating filters with placeholders
+//        let search = "leslie"
+//        request.predicate = NSPredicate(format: "author.name = %@", search)
+        
+        //TODO: - 15 Creating filters with multiple values
+//        let search = "leslie"
+//        let year = 1983
+//        request.predicate = NSPredicate(format: "author.name = %@ && year = %d", search, year)
+        
+        //TODO: - 16 Filtering values with predicate keywords
+//        let search = "leslie"
+//        request.predicate = NSPredicate(format: "author.name BEGINSWITH[c] %@", search)
+        
         do {
             ///2. The next step is to fetch the objects with the context's fetch() method. This method returns an array of objects that we can assign to a property to be able to access the values from other methods in the class. In this example, we called that property listOfBooks.
             listOfBooks = try context.fetch(request)
