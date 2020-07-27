@@ -40,7 +40,7 @@ class EditAuthorViewController: UIViewController {
     @IBAction func saveAuthor(_ sender: UIBarButtonItem) {
         let name = authorName.text?.trimmingCharacters(in: .whitespaces)
         if name != "" {
-            //TODO: - 17 Checking for duplicates
+            //TODO: - 13 Checking for duplicates
             let request: NSFetchRequest<Authors> = Authors.fetchRequest()
             request.predicate = NSPredicate(format: "name = %@", name!)
             

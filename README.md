@@ -18,6 +18,8 @@
 
 ## Counting Objects
 
-## Predicate
+## Predicate | Filtering
 
 ## Predicate | Checking for duplicates
+
+## Sorting
