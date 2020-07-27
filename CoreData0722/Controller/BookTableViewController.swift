@@ -125,17 +125,27 @@ class BookTableViewController: UITableViewController {
     }
     */
 
-    /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        //TODO: - 15 Delete Object - Step 2:
+        ///Delete the Books object from the Persistent Store when the user presses the Delete button
         if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            let book = listOfBooks[indexPath.row]
+            context.delete(book)
+            
+            do {
+                try context.save()  //Conformed deleting from core data model
+                listOfBooks.remove(at: indexPath.row)   //removed from local constant
+                tableView.deleteRows(at: [indexPath], with: .fade) //deleted from table view
+                tableView.setEditing(false, animated: true)
+            } catch {
+                print("Error")
+            }
+            
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
 
     /*
     // Override to support rearranging the table view.
@@ -162,4 +172,13 @@ class BookTableViewController: UITableViewController {
     }
     */
 
+    @IBAction func editBooks(_ sender: UIBarButtonItem) {
+        //TODO: - 15 Delete Object - Step 1:
+        ///To activate the table’s edition mode
+        if tableView.isEditing {
+            tableView.setEditing(false, animated: true)
+        } else {
+            tableView.setEditing(true, animated: true)
+        }
+    }
 }

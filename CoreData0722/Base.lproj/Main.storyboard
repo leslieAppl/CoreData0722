@@ -258,7 +258,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="epm-Ey-Yza">
-                        <barButtonItem key="leftBarButtonItem" title="Delete Book" id="Wgp-E4-ghz"/>
+                        <barButtonItem key="leftBarButtonItem" title="Delete Book" id="Wgp-E4-ghz">
+                            <connections>
+                                <action selector="editBooks:" destination="KXo-zq-iYp" id="Ms7-HE-TMY"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add Book" id="qfB-Qm-lSH">
                             <connections>
                                 <segue destination="BYZ-38-t0r" kind="show" id="z2g-Jj-hy4"/>
