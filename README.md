@@ -23,3 +23,5 @@
 ## Predicate | Checking for duplicates
 
 ## Sorting
+
+## Deleting Object

@@ -13,6 +13,8 @@ class BookTableViewController: UITableViewController {
     
     //TODO: - 2 Accessing the context from a view controller
     var context: NSManagedObjectContext!
+    
+    
     var listOfBooks: [Books] = []
 
     override func viewDidLoad() {
