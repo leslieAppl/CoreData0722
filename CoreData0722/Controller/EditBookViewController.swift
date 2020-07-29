@@ -45,8 +45,8 @@ class EditBookViewController: UIViewController {
             ///Attribute Type: Binary Data; Deprecated: Store in External Record File.
             let nocover = UIImage(named: "nocover")
             let nothumbnail = UIImage(named: "nothumbnail")
-            newBook.cover = nocover?.pngData()
-            newBook.thumbnail = nothumbnail?.pngData()
+            newBook.cover = nocover?.pngData() as NSObject?
+            newBook.thumbnail = nothumbnail?.pngData() as NSObject?
             
             newBook.author = selectedAuthor
             

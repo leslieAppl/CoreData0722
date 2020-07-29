@@ -101,7 +101,7 @@ class BookTableViewController: UITableViewController {
         
         //TODO: - 9 Getting back the images from data
         if book.thumbnail != nil {
-            cell.bookCover.image = UIImage(data: book.thumbnail!)
+            cell.bookCover.image = UIImage(data: book.thumbnail as! Data)
         }
 
         cell.bookYear.text = String(book.year)
