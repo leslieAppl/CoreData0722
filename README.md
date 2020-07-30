@@ -31,3 +31,9 @@
 # Branch: WorkingWithNSFetchedResultsController
 
 ## Migration
+
+## Fetching objects with an NSFetchedResultsController object
+
+
+
+
