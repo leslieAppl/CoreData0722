@@ -1,5 +1,7 @@
 # CoreData
 
+# Branch: master - Working with Array in TableView
+
 ## Creating CoreData Model
 
 ## Initializing the Core Data stack in the app’s delegate
@@ -25,3 +27,7 @@
 ## Sorting
 
 ## Deleting Object
+
+# Branch: WorkingWithNSFetchedResultsController
+
+## Migration
