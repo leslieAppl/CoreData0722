@@ -29,6 +29,9 @@ class EditBookViewController: UIViewController {
 
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+    }
+    
     @IBAction func saveBookBtnPressed(_ sender: UIBarButtonItem) {
         let year = Int32(bookYear.text!)
         let title = bookTitle.text!.trimmingCharacters(in: .whitespaces)
@@ -46,7 +49,7 @@ class EditBookViewController: UIViewController {
             let nocover = UIImage(named: "nocover")
             let nothumbnail = UIImage(named: "nothumbnail")
             newBook.cover = nocover?.pngData()
-            newBook.thumbnail = nothumbnail?.pngData()            
+            newBook.thumbnail = nothumbnail?.pngData()
             newBook.author = selectedAuthor
             
             do {
