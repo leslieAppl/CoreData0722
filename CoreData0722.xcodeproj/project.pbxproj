@@ -18,6 +18,8 @@
 		CE51581B24C826E80058277D /* BookTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE51581A24C826E80058277D /* BookTableViewController.swift */; };
 		CE51582024C8787D0058277D /* AuthorsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE51581F24C8787D0058277D /* AuthorsTableViewController.swift */; };
 		CE51582224C878990058277D /* EditAuthorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE51582124C878990058277D /* EditAuthorViewController.swift */; };
+		CE51582524D41C1E0058277D /* ShowAuthorsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE51582424D41C1E0058277D /* ShowAuthorsCell.swift */; };
+		CE51582724D41CE00058277D /* ShowAuthorsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE51582624D41CE00058277D /* ShowAuthorsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,8 @@
 		CE51581F24C8787D0058277D /* AuthorsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorsTableViewController.swift; sourceTree = "<group>"; };
 		CE51582124C878990058277D /* EditAuthorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAuthorViewController.swift; sourceTree = "<group>"; };
 		CE51582324D2B15D0058277D /* books 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "books 2.xcdatamodel"; sourceTree = "<group>"; };
+		CE51582424D41C1E0058277D /* ShowAuthorsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAuthorsCell.swift; sourceTree = "<group>"; };
+		CE51582624D41CE00058277D /* ShowAuthorsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAuthorsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				CE51581A24C826E80058277D /* BookTableViewController.swift */,
+				CE51582624D41CE00058277D /* ShowAuthorsTableViewController.swift */,
 				CE51581824C826880058277D /* EditBookViewController.swift */,
 				CE51581F24C8787D0058277D /* AuthorsTableViewController.swift */,
 				CE51582124C878990058277D /* EditAuthorViewController.swift */,
@@ -95,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				CE51581624C825BE0058277D /* BooksCell.swift */,
+				CE51582424D41C1E0058277D /* ShowAuthorsCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -179,8 +185,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE51581724C825BE0058277D /* BooksCell.swift in Sources */,
+				CE51582724D41CE00058277D /* ShowAuthorsTableViewController.swift in Sources */,
 				CE51582224C878990058277D /* EditAuthorViewController.swift in Sources */,
 				CE51581924C826880058277D /* EditBookViewController.swift in Sources */,
+				CE51582524D41C1E0058277D /* ShowAuthorsCell.swift in Sources */,
 				CE51581524C7F4090058277D /* books.xcdatamodeld in Sources */,
 				CE51580024C7F1C60058277D /* AppDelegate.swift in Sources */,
 				CE51582024C8787D0058277D /* AuthorsTableViewController.swift in Sources */,
