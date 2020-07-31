@@ -144,10 +144,11 @@ class BookTableViewController: UITableViewController {
         if editingStyle == .delete {
             let book = fetchedController.object(at: indexPath)
             context.delete(book)
-            
+            tableView.reloadData()
             do {
                 try context.save()
                 tableView.setEditing(false, animated: true)
+                
             } catch {
                 print("Error")
             }
@@ -229,5 +230,6 @@ extension BookTableViewController: NSFetchedResultsControllerDelegate {
         default:
             break
         }
+        tableView.reloadData()
     }
 }
