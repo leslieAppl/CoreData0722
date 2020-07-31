@@ -34,6 +34,8 @@
 
 ## Fetching objects with an NSFetchedResultsController object
 
+## Organizing the Books objects in sections
+
 
 
 

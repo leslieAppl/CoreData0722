@@ -11,7 +11,6 @@ import CoreData
 
 class BookTableViewController: UITableViewController {
     
-    //TODO: - 2 Accessing the context from a view controller
     var context: NSManagedObjectContext!
     var fetchedController: NSFetchedResultsController<Books>!
     
@@ -24,11 +23,27 @@ class BookTableViewController: UITableViewController {
         let appDelegate = app.delegate as! AppDelegate
         context = appDelegate.context
         
-        let request: NSFetchRequest<Books> = Books.fetchRequest()
-        let sort = NSSortDescriptor(key: "title", ascending: true, selector: #selector(NSString.caseInsensitiveCompare(_:)))
-        request.sortDescriptors = [sort]
+        //TODO: - 1 Fetching objects with an NSFetchedResultsController object
+//        let request: NSFetchRequest<Books> = Books.fetchRequest()
+//        let sort = NSSortDescriptor(key: "title", ascending: true, selector: #selector(NSString.caseInsensitiveCompare(_:)))
+//        request.sortDescriptors = [sort]
+//
+//        fetchedController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+//        fetchedController.delegate = self
+//
+//        do {
+//            try fetchedController.performFetch()
+//        } catch {
+//            print("Error")
+//        }
         
-        fetchedController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        //TODO: - 2 Organizing the Books objects in sections
+        let request: NSFetchRequest<Books> = Books.fetchRequest()
+        let sort1 = NSSortDescriptor(key: "author.name", ascending: true, selector: #selector(NSString.caseInsensitiveCompare(_:)))
+        let sort2 = NSSortDescriptor(key: "title", ascending: true, selector: #selector(NSString.caseInsensitiveCompare(_:)))
+        request.sortDescriptors = [sort1, sort2]
+        
+        fetchedController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: "author.name", cacheName: nil)
         fetchedController.delegate = self
         
         do {
@@ -38,7 +53,6 @@ class BookTableViewController: UITableViewController {
         }
     }
     
-    //TODO: - 4 Fetching values from the Persistent Store
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
@@ -46,9 +60,11 @@ class BookTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
+    //TODO: - 3 Implementing the necessary protocol methods to work with sections
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+        if let sections = fetchedController.sections {
+            return sections.count
+        }
         return 1
     }
 
@@ -58,10 +74,16 @@ class BookTableViewController: UITableViewController {
             let sectionInfo = sections[section]
             return sectionInfo.numberOfObjects  //numberOfRowsInSection
         }
-        
         return 0
     }
 
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if let sections = fetchedController.sections {
+            let sectionInfo = sections[section]
+            return sectionInfo.name
+        }
+        return nil
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "booksCell", for: indexPath) as! BooksCell
@@ -154,7 +176,24 @@ class BookTableViewController: UITableViewController {
     }
 }
 
+//MARK: - NSFetchedResultsControllerDelegate Protocol
 extension BookTableViewController: NSFetchedResultsControllerDelegate {
+    
+    ///2 Organizing the Books objects in sections
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+        switch type {
+        case .insert:
+            let index = IndexSet(integer: sectionIndex)
+            tableView.insertSections(index, with: .fade)
+        case .delete:
+            let index = IndexSet(integer: sectionIndex)
+            tableView.deleteSections(index, with: .fade)
+        default:
+            break
+        }
+    }
+    
+    ///1 Fetching objects with an NSFetchedResultsController object
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
         case .delete:
