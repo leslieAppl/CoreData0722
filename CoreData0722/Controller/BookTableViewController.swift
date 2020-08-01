@@ -14,7 +14,8 @@ class BookTableViewController: UITableViewController {
     
     var context: NSManagedObjectContext!
     var fetchedController: NSFetchedResultsController<Books>!
-    
+    var searchController: UISearchController!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,6 +25,13 @@ class BookTableViewController: UITableViewController {
         let appDelegate = app.delegate as! AppDelegate
         context = appDelegate.context
         
+        //MARK: - Searching books
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self
+        navigationItem.searchController = searchController
+
         let request: NSFetchRequest<Books> = Books.fetchRequest()
         let sort = NSSortDescriptor(key: "title", ascending: true, selector: #selector(NSString.caseInsensitiveCompare(_:)))
         request.sortDescriptors = [sort]
@@ -167,3 +175,39 @@ extension BookTableViewController: NSFetchedResultsControllerDelegate {
         }
     }
 }
+
+extension BookTableViewController: UISearchResultsUpdating, UISearchBarDelegate {
+    func updateSearchResults(for searchController: UISearchController) {
+        if let text = searchController.searchBar.text {
+            let search = text.trimmingCharacters(in: .whitespaces)
+            
+            if !search.isEmpty {
+                let request = fetchedController.fetchRequest
+                request.predicate = NSPredicate(format: "title CONTAINS[cd] %@", search)
+                
+                do {
+                    try fetchedController.performFetch()
+                } catch {
+                    print("Error")
+                }
+                
+                tableView.reloadData()
+            }
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        let request = fetchedController.fetchRequest
+        request.predicate = nil //assign an empty predicate to clear the controller
+        
+        do {
+            try fetchedController.performFetch()
+        } catch {
+            print("Error")
+        }
+        
+        tableView.reloadData()
+    }
+}
+
+

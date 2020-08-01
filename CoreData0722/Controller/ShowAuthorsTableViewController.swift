@@ -22,8 +22,8 @@ class ShowAuthorsTableViewController: UITableViewController {
         
         let app = UIApplication.shared
         let appDelegate = app.delegate as! AppDelegate
-        context = appDelegate.context
-
+        context = appDelegate.context        
+        
         let request: NSFetchRequest<Books> = Books.fetchRequest()
         let sort1 = NSSortDescriptor(key: "author.name", ascending: true, selector: #selector(NSString.caseInsensitiveCompare(_:)))
         let sort2 = NSSortDescriptor(key: "title", ascending: true, selector: #selector(NSString.caseInsensitiveCompare(_:)))
@@ -156,3 +156,4 @@ extension ShowAuthorsTableViewController: NSFetchedResultsControllerDelegate {
         }
     }
 }
+
