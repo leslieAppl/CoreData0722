@@ -72,10 +72,17 @@ class BookTableViewController: UITableViewController {
     func updateCell(cell: BooksCell, path: IndexPath) {
         let book = fetchedController.object(at: path)
         
+        ///1. access values using dot notation
         cell.bookTitle.text = book.title
         
+        ///2. access values using keys
+        let bookTitle = book.value(forKey: "title") as! String
+        print(bookTitle)
+        
+        let bookThumbnail = book.value(forKey: "thumbnail") as! Data
+        
         if book.thumbnail != nil {
-            cell.bookCover.image = UIImage(data: book.thumbnail!)
+            cell.bookCover.image = UIImage(data: bookThumbnail)
         }
         
         let year = book.year
