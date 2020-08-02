@@ -95,11 +95,16 @@ class BookTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "booksCell", for: indexPath) as! BooksCell
         
+        ///Way 1: access value of data using dot notations
         let book = listOfBooks[indexPath.row]
         cell.bookTitle.text = book.title
-//        cell.bookCover.image = book.thumbnail as? UIImage
+        
+        ///Way 2: access value of data using keys
+        let bookTitle = book.value(forKey: "title")
+        print(bookTitle)
         
         //TODO: - 9 Getting back the images from data
+        //        cell.bookCover.image = book.thumbnail as? UIImage
         if book.thumbnail != nil {
             cell.bookCover.image = UIImage(data: book.thumbnail!)
         }
