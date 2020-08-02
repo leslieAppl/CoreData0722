@@ -35,7 +35,7 @@ class BookTableViewController: UITableViewController {
         let request: NSFetchRequest<Books> = Books.fetchRequest()
         let sort = NSSortDescriptor(key: "title", ascending: true, selector: #selector(NSString.caseInsensitiveCompare(_:)))
         request.sortDescriptors = [sort]
-
+        
         fetchedController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         fetchedController.delegate = self
 
